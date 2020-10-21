@@ -1,0 +1,6 @@
+[flake8]
+exclude =
+    .git,
+    __pycache__,
+    {{ cookiecutter.optional_venv_dir_name }},
+max-line-length=120

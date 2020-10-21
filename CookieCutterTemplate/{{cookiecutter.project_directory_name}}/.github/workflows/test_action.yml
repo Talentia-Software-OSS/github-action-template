@@ -1,0 +1,26 @@
+{% raw %}
+name: Test this custom GitHub Action
+on: [ push, pull_request ]
+
+jobs:
+  test_custom_action:
+    name: A job to test custom action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print debug info
+        uses: hmarr/debug-action@v1.0.0
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run custom action step
+        uses: ./ # Uses an action in the root directory
+        id: custom
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required to use GitHub API, eg. to act on pull request
+        with:
+          who-to-greet: "Custom Action"
+      # Use the output from the `custom` step
+      - name: Get the output time
+        run: echo "The output was ${{ steps.custom.outputs.time }}"
+{% endraw %}

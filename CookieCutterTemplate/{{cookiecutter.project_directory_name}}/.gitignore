@@ -1,0 +1,7 @@
+﻿.idea
+{{ cookiecutter.optional_venv_dir_name }}
+__pycache__
+*.coverage
+*coverage*.xml
+*-report
+*-report.*

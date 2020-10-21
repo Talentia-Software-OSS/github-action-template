@@ -1,0 +1,7 @@
+# First exclude everything
+**/*
+# Now list what we need
+!{{cookiecutter.package_name}}/*.py
+!action.yml
+!README.md
+!requirements.lock
